@@ -1,4 +1,8 @@
 <ion-content color="primary" padding>
+  <!-- 
+    The form element represents a collection of form-associated elements.
+    (ngSubmit) directive used for when i submit then login forn will be invoke.
+   -->
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
@@ -7,6 +11,10 @@
             <h3>Login</h3>
           </div>
           <div padding>
+            <!-- 
+              In this block i am taking input box email,password for login to user
+              and i set 'required' for manadatory to fill.
+             -->
             <ion-item>
               <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
             </ion-item>

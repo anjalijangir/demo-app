@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+/**
+ * AppRoutingModule handles the configuration of route,herewe are declaring
+ * array of Routes service.
+ */
 const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
