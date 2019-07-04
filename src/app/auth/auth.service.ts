@@ -1,7 +1,7 @@
 import { Injectable } from  '@angular/core';
 import { HttpClient } from  '@angular/common/http';
 import { tap } from  'rxjs/operators';
-import { Observable, BehaviorSubject } from  'rxjs';
+import { Observable, BehaviorSubject, of } from  'rxjs';
 
 import { Storage } from  '@ionic/storage';
 import { User } from  './user';
@@ -17,7 +17,14 @@ export class AuthService {
 
   constructor(private  httpClient:  HttpClient, private  storage:  Storage) { }
 
-  register(user: User): Observable<AuthResponse> {
+  register(user: User): Observable<any> {
+    this.storage.set("USER_NAME", user.name);
+    this.storage.set("ACCESS_TOKEN", "XYZ");
+    this.storage.set("EXPIRES_IN", "60");
+    this.authSubject.next(true);
+    return new Observable(obs => obs.next("success"));
+
+    /*
     return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user).pipe(
       tap(async (res:  AuthResponse ) => {
 
@@ -29,9 +36,17 @@ export class AuthService {
       })
 
     );
+    */
   }
 
-  login(user: User): Observable<AuthResponse> {
+  login(user: User): Observable<any> {
+    this.storage.set("USER_NAME", user.name);
+    this.storage.set("ACCESS_TOKEN", "XYZ");
+    this.storage.set("EXPIRES_IN", "60");
+    this.authSubject.next(true);
+    return new Observable(obs => obs.next("success"));
+
+    /*
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/login`, user).pipe(
       tap(async (res: AuthResponse) => {
 
@@ -42,6 +57,7 @@ export class AuthService {
         }
       })
     );
+    */
   }
 
   async logout() {
