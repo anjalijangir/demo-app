@@ -5,7 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
  * array of Routes service.
  */
 const routes: Routes = [
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'register', loadChildren: './auth/register/register.module#RegisterPageModule' },
   { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' },

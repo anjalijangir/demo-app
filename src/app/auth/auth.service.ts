@@ -12,15 +12,15 @@ import { User } from  './user';
 })
 export class AuthService {
 
-  constructor(private  httpClient:  HttpClient, private  storage:  Storage) { }
+  constructor( private  storage:  Storage) { }
 
   register(user: User): Observable<any> {
-    this.storage.set("USER_NAME", user.name);  
+   this.storage.set("USER_NAME", user.email);  
     return new Observable(obs => obs.next("success"));    
   }
 
   login(user: User): Observable<any> {
-    this.storage.set("USER_NAME", user.name);    
+    this.storage.set("USER_NAME", user.email);    
     return new Observable(obs => obs.next("success"));   
   }  
 }

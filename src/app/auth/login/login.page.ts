@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from  "@angular/router";
 import { AuthService } from '../auth.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,10 @@ export class LoginPage implements OnInit {
    * @param form 
    */
   login(form){
-    this.authService.login(form.value).subscribe((res)=>{
+    let user : User = new User();
+    user.email = form.value["email"];
+    user.password = form.value["password"]; 
+    this.authService.login(user).subscribe((res)=>{
       this.router.navigateByUrl('home');
     });
   }
